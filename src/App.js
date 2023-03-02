@@ -1,25 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import BookCreate from './components/BookCreate';
+import BookList from './components/BookList';
+import './index.css';
+const App = () => {
+  const [books, setBooks] = useState([]);
 
-function App() {
+  const createBook = (title) => {
+    const newBook = [
+      ...books,
+      { id: Math.round(Math.random() * 1986 * books.length + 1), title: title },
+    ];
+    setBooks(newBook);
+  };
+  const deleteBook = (id) => {
+    console.log('Delete Book', id);
+    const deleteBook = books.filter((book) => {
+      if (book.id != id) return book;
+    });
+    setBooks(deleteBook);
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      App
+      <BookCreate onCreate={createBook} />
+      <BookList bookList={books} deleteBookFunc={deleteBook} />
     </div>
   );
-}
+};
 
 export default App;

@@ -1,0 +1,11 @@
+.book-card {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  height: 200px;
+  width: 200px;
+  padding: 12px;
+}
+
+.book-card h2 {
+  font-weight: bold;
+}
