@@ -3,13 +3,16 @@ import BookEdit from './BookEdit';
 import './BookShow.css';
 const BookShow = ({ book, deleteBookFunc }) => {
   const [showEdit, setShowEdit] = useState(false);
+  let content = <h2>{book.title}</h2>;
+
   if (showEdit) {
-    content = <BookEdit />;
+    content = <BookEdit book={book} />;
   }
+
   const handleDelete = () => {
     deleteBookFunc(book.id);
   };
-  let content = <h2>{book.title}</h2>;
+
   const handleEdit = () => {
     setShowEdit(!showEdit);
   };
